@@ -7,7 +7,7 @@ function App() {
       name: '开云体育',
       description: '充100送100',
       image: 'https://pic1.imgdb.cn/item/699c51217aea005f38310225.jpg',
-      color: 'from-red-500 to-emerald-500',
+      color: 'from-red-500 to-red-500',
       downloadLink: 'https://example.com/game1'
     },
     {

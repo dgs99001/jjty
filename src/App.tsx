@@ -50,16 +50,16 @@ function App() {
           </p>
         </div>
 
-        {/* 游戏卡片网格 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {/* 游戏卡片网格 - 手机端横向小卡片 */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-12">
           {games.map((game) => (
             <div
               key={game.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-lg"
             >
               {/* 游戏图标区域 */}
-              <div className={`bg-gradient-to-br ${game.color} p-8 flex items-center justify-center`}>
-                <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
+              <div className={`bg-gradient-to-br ${game.color} p-4 sm:p-8 flex items-center justify-center`}>
+                <div className="w-16 h-16 sm:w-24 sm:h-24 bg-white rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
                   <img
                     src={game.image}
                     alt={game.name}
@@ -69,20 +69,20 @@ function App() {
               </div>
 
               {/* 游戏信息区域 */}
-              <div className="p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">
+              <div className="p-3 sm:p-6">
+                <h2 className="text-base sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
                   {game.name}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-6 min-h-[3rem]">
+                <p className="text-xs sm:text-base text-gray-600 leading-relaxed mb-3 sm:mb-6 line-clamp-2 sm:min-h-[3rem]">
                   {game.description}
                 </p>
 
-                               {/* 跳转按钮 */}
+                {/* 跳转按钮 */}
                 <a
-                  href={game.link}
+                  href={game.downloadLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-gray-900 text-white py-4 px-6 rounded-xl font-semibold hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center gap-2 active:scale-95 transform"
+                  className="w-full bg-gray-900 text-white py-2 sm:py-4 px-3 sm:px-6 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center gap-2 active:scale-95 transform"
                 >
                   立即下载
                 </a>

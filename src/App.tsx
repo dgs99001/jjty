@@ -52,10 +52,11 @@ function App() {
 
         {/* 游戏卡片 - 横向排列 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 lg:gap-6 mb-8 sm:mb-12">
-          {games.map((game) => (
+          {games.map((game, index) => (
             <div
               key={game.id}
-              className="bg-white rounded-lg sm:rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation flex flex-col"
+              className="bg-white rounded-lg sm:rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation flex flex-col animate-slide-in"
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* 游戏图标区域 */}
               <div className={`bg-gradient-to-br ${game.color} p-6 sm:p-8 flex items-center justify-center`}>

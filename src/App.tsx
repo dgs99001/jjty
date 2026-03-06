@@ -51,16 +51,16 @@ function App() {
         </div>
 
         {/* 游戏卡片 - 横向布局 */}
-        <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-12">
+        <div className="space-y-4 sm:space-y-5 md:space-y-6 mb-8 sm:mb-12">
           {games.map((game) => (
             <div
               key={game.id}
-              className="bg-white rounded-xl sm:rounded-2xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation"
+              className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation"
             >
-              <div className="flex flex-col sm:flex-row">
+              <div className="flex flex-col md:flex-row">
                 {/* 游戏图标区域 */}
-                <div className={`bg-gradient-to-br ${game.color} p-8 sm:p-10 flex items-center justify-center sm:w-64 flex-shrink-0`}>
-                  <div className="w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
+                <div className={`bg-gradient-to-br ${game.color} p-6 sm:p-8 md:p-10 flex items-center justify-center md:w-72 lg:w-80 flex-shrink-0`}>
+                  <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 bg-white rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
                     <img
                       src={game.image}
                       alt={game.name}
@@ -71,26 +71,26 @@ function App() {
                 </div>
 
                 {/* 游戏信息区域 */}
-                <div className="flex-1 p-6 sm:p-8 flex flex-col justify-center">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 text-center sm:text-left">
+                <div className="flex-1 p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-5 text-center md:text-left">
                     {game.name}
                   </h2>
                   {game.description && (
-                    <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6 text-center sm:text-left">
+                    <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-4 sm:mb-5 md:mb-6 text-center md:text-left">
                       {game.description}
                     </p>
                   )}
 
                   {/* 跳转按钮 */}
-                  <div className="flex justify-center sm:justify-start">
+                  <div className="flex justify-center md:justify-start">
                     <a
                       href={game.downloadLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center bg-gray-900 text-white py-4 px-8 sm:px-12 rounded-xl text-base sm:text-lg font-semibold hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 touch-manipulation active:scale-95 transform shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center justify-center bg-gray-900 text-white py-3 px-6 sm:py-4 sm:px-10 md:px-14 lg:px-16 rounded-lg sm:rounded-xl text-sm sm:text-base md:text-lg font-semibold hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 touch-manipulation active:scale-95 transform shadow-lg hover:shadow-xl min-w-[160px] sm:min-w-[200px]"
                     >
                       立即体验
-                      <Download className="ml-2 w-5 h-5" />
+                      <Download className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                     </a>
                   </div>
                 </div>

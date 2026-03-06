@@ -50,49 +50,49 @@ function App() {
           </p>
         </div>
 
-        {/* 游戏卡片 - 横向布局 */}
-        <div className="space-y-4 sm:space-y-5 md:space-y-6 mb-8 sm:mb-12">
+        {/* 游戏卡片 - 横向排列 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 lg:gap-6 mb-8 sm:mb-12">
           {games.map((game) => (
             <div
               key={game.id}
-              className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation"
+              className="bg-white rounded-lg sm:rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl touch-manipulation flex flex-col"
             >
-              <div className="flex flex-col md:flex-row">
-                {/* 游戏图标区域 */}
-                <div className={`bg-gradient-to-br ${game.color} p-6 sm:p-8 md:p-10 flex items-center justify-center md:w-72 lg:w-80 flex-shrink-0`}>
-                  <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 bg-white rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
-                    <img
-                      src={game.image}
-                      alt={game.name}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
+              {/* 游戏图标区域 */}
+              <div className={`bg-gradient-to-br ${game.color} p-6 sm:p-8 flex items-center justify-center`}>
+                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-white rounded-2xl flex items-center justify-center shadow-lg overflow-hidden">
+                  <img
+                    src={game.image}
+                    alt={game.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
+              </div>
 
-                {/* 游戏信息区域 */}
-                <div className="flex-1 p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-5 text-center md:text-left">
+              {/* 游戏信息区域 */}
+              <div className="flex-1 p-4 sm:p-5 md:p-6 flex flex-col justify-between">
+                <div>
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">
                     {game.name}
                   </h2>
                   {game.description && (
-                    <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-4 sm:mb-5 md:mb-6 text-center md:text-left">
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-5 text-center line-clamp-3">
                       {game.description}
                     </p>
                   )}
+                </div>
 
-                  {/* 跳转按钮 */}
-                  <div className="flex justify-center md:justify-start">
-                    <a
-                      href={game.downloadLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center bg-gray-900 text-white py-3 px-6 sm:py-4 sm:px-10 md:px-14 lg:px-16 rounded-lg sm:rounded-xl text-sm sm:text-base md:text-lg font-semibold hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 touch-manipulation active:scale-95 transform shadow-lg hover:shadow-xl min-w-[160px] sm:min-w-[200px]"
-                    >
-                      立即体验
-                      <Download className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                    </a>
-                  </div>
+                {/* 跳转按钮 */}
+                <div className="flex justify-center mt-auto">
+                  <a
+                    href={game.downloadLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-gray-900 text-white py-3 px-6 sm:px-8 rounded-lg text-sm sm:text-base font-semibold hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 touch-manipulation active:scale-95 transform shadow-lg hover:shadow-xl w-full"
+                  >
+                    立即体验
+                    <Download className="ml-2 w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </div>

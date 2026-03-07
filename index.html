@@ -11,13 +11,55 @@
     <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-Tawk_API.onLoad = function(){
-  // 隐藏默认的 tawk.to 按钮
-  const tawkWidget = document.getElementById('tawk-bubble-container');
-  if (tawkWidget) {
-    tawkWidget.style.display = 'none';
+
+// 隐藏默认按钮的配置
+Tawk_API.customStyle = {
+  visibility: {
+    desktop: {
+      position: 'br',
+      xOffset: '-999999px',
+      yOffset: '-999999px'
+    },
+    mobile: {
+      position: 'br',
+      xOffset: '-999999px',
+      yOffset: '-999999px'
+    }
   }
 };
+
+Tawk_API.onLoad = function(){
+  // 隐藏 tawk.to 所有默认 UI 元素
+  Tawk_API.hideWidget();
+
+  // 通过 CSS 选择器隐藏所有可能的元素
+  const hideElements = () => {
+    const selectors = [
+      '#tawk-bubble-container',
+      'iframe[title*="chat"]',
+      'div[id^="tawk"]',
+      '.tawk-min-container',
+      '.tawk-button'
+    ];
+
+    selectors.forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(el => {
+        if (el && el.style) {
+          el.style.display = 'none';
+          el.style.visibility = 'hidden';
+          el.style.opacity = '0';
+          el.style.pointerEvents = 'none';
+        }
+      });
+    });
+  };
+
+  hideElements();
+  // 定期检查确保隐藏
+  setInterval(hideElements, 500);
+};
+
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
@@ -78,9 +120,21 @@ s0.parentNode.insertBefore(s1,s0);
     }
   }
 
-  /* 隐藏默认的 tawk.to 悬浮按钮 */
-  #tawk-bubble-container {
+  /* 隐藏默认的 tawk.to 悬浮按钮 - 多重选择器确保完全隐藏 */
+  #tawk-bubble-container,
+  iframe[title*="chat"],
+  div[id^="tawk"],
+  .tawk-min-container,
+  .tawk-button,
+  #tawk-chat-button,
+  .tawk-chat-panel {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -999999px !important;
+    top: -999999px !important;
   }
 
   /* 移动端适配 */
@@ -112,10 +166,13 @@ s0.parentNode.insertBefore(s1,s0);
       <span>在线客服</span>
     `;
 
-    // 点击事件 - 打开 tawk.to 聊天窗口
+    // 点击事件 - 显示并最大化 tawk.to 聊天窗口
     chatButton.addEventListener('click', function() {
-      if (typeof Tawk_API !== 'undefined' && Tawk_API.maximize) {
-        Tawk_API.maximize();
+      if (typeof Tawk_API !== 'undefined') {
+        Tawk_API.showWidget();
+        if (Tawk_API.maximize) {
+          Tawk_API.maximize();
+        }
       }
     });
 
